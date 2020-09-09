@@ -1,0 +1,38 @@
+package rules
+
+import com.businessRules.PaymentOffer
+
+rule "Offer for physicalProduct"
+	when 
+		offerObject: PaymentOffer(paymentFor=="physical Product")
+	then
+		offerObject.setOffer("generate a packing slip for shipping");
+	end
+
+rule "Offer for book"
+	when 
+		offerObject: PaymentOffer(paymentFor=="book")
+	then
+		offerObject.setOffer("create a duplicate packing slip for the royalty department");
+	end
+
+rule "Offer for membership"
+	when 
+		offerObject: PaymentOffer(paymentFor=="membership")
+	then
+		offerObject.setOffer("activate that membership");
+	end
+	
+rule "Offer for upgrade"
+	when 
+		offerObject: PaymentOffer(paymentFor=="upgrade")
+	then
+		offerObject.setOffer("apply the upgrade");
+	end
+
+rule "Offer for video"
+	when 
+		offerObject: PaymentOffer(paymentFor=="video")
+	then
+		offerObject.setOffer("add a free First Aid video");
+	end
